@@ -52,7 +52,8 @@ const config = {
         ...devices['Desktop Chrome'],
         headless : false,
         screenshot: 'on',
-        trace : 'on'
+        trace : 'on',
+        viewport: {width: 1536, height: 864}
         
       },
     },
