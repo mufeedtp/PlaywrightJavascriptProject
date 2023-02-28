@@ -5,7 +5,7 @@ const { POManager } = require('../pages/POManager');
 //conver test data file to --> string --> then to javascript object;
 const data = JSON.parse(JSON.stringify(require("../testdata/testdata.json")))
 
-test.only('Login Google', async ({page})=>{
+test('Login Google', async ({page})=>{
 
   const poManager = new POManager(page) 
   const loginPage = poManager.getLoginPage();
@@ -20,7 +20,6 @@ test.only('Login Google', async ({page})=>{
   await cartPage.clickCheckOut();
   const paymentPage = poManager.getPaymentPage();
   await paymentPage.makeCreditCardPayment();
-
   const orderConfirmationPage = poManager.getOrderConfirmationPage();
   await orderConfirmationPage.VerifySuccessOrderConfoirmation()
   const orderID = await orderConfirmationPage.getOrderId()
@@ -29,5 +28,14 @@ test.only('Login Google', async ({page})=>{
   const ordersPage = poManager.getOrdersPage()
   console.log(orderId)
   ordersPage.checkOrderTrackIdAndViewOrder(orderId)  
-  await page.pause();
+  // await page.pause();
+});
+
+test('Prchase Order', async ({page})=>{
+
+  const poManager = new POManager(page) 
+  const loginPage = poManager.getLoginPage();
+  await loginPage.launchApplication();
+  await loginPage.Login(data.username,data.password);
+  // await page.pause();
 });

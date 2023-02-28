@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test" : "npx playwright test --reporter=line,allure-playwright && allure generate ./allure-results --clean && allure open allure-report"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.30.0"
+    "@playwright/test": "^1.31.1",
+    "allure-playwright": "^2.0.0"
   }
 }

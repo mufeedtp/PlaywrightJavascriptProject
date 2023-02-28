@@ -53,6 +53,7 @@ const config = {
         headless : false,
         screenshot: 'on',
         trace : 'on',
+        video : 'retain-on-failure'
         // viewport: {width: 1536, height: 864}
         
       },
